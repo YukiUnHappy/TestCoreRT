@@ -16,7 +16,7 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: RyuJIT
-        path: bin\release\netcoreapp3.1\linux-x64\publish
+        path: bin/release/netcoreapp3.1/linux-x64/publish
 
   CPP:
     runs-on: ubuntu-latest
@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: CPP
-        path: bin\release\netcoreapp3.1\linux-x64\publish
+        path: bin/release/netcoreapp3.1/linux-x64/publish
