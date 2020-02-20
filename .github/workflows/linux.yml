@@ -1,6 +1,10 @@
 name: Linux
 
-on: [push]
+on:
+  push:
+    tags:
+      - linux
+      - both
 
 jobs:
   RyuJIT:
@@ -11,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install clang zlib1g-dev libkrb5-dev libtinfo5
     - name: Build
-      run: dotnet publish -r linux-x64 -c release
+      run: dotnet publish -v d -r linux-x64 -c release
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
@@ -26,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install clang zlib1g-dev libkrb5-dev libtinfo5
     - name: Build
-      run: dotnet publish -r linux-x64 -c release -p:NativeCodeGen=cpp
+      run: dotnet publish -v d -r linux-x64 -c release -p:NativeCodeGen=cpp
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:

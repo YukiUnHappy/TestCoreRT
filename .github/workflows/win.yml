@@ -1,6 +1,10 @@
 name: Win
 
-on: [push]
+on:
+  push:
+    tags:
+      - win
+      - both
 
 jobs:
   RyuJIT:
@@ -9,12 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: dotnet publish -r win-x64 -c release
+      run: dotnet publish -v d -r win-x64 -c release
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: RyuJIT
-        path: bin\Release\netcoreapp3.1\win-x64\publish
+        path: bin/release/netcoreapp3.1/win-x64/publish
 
   CPP:
     runs-on: windows-latest
@@ -24,9 +28,9 @@ jobs:
     - name: Setup VS Dev Environment
       uses: seanmiddleditch/gha-setup-vsdevenv@v1
     - name: Build
-      run: dotnet publish -r win-x64 -c release -p:NativeCodeGen=cpp
+      run: dotnet publish -v d -r win-x64 -c release -p:NativeCodeGen=cpp
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: CPP
-        path: bin\Release\netcoreapp3.1\win-x64\publish
+        path: bin/release/netcoreapp3.1/win-x64/publish
